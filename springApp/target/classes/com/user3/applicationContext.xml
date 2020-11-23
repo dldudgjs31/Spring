@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!-- xml 스키마 정보 포함 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+		
+		<!-- setter를 이용한 프로퍼티 설정(문자열 또는 기본 자료형) -->
+	<bean id="userService" class="com.user3.UserServiceImpl">
+	<!-- set에 값을 넘겨줌 -->
+		<property name="name" value="자바다"/>
+		<property name="tel" value="010-1234-5678"/>
+		<property name="age" value="27"/>
+	</bean>
+	
+	<bean id="userService2" class="com.user3.UserServiceImpl2">
+		<property name="name" value="스프링"/>
+		<property name="tel" value="010-1111-2222"/>
+		<property name="age" value="15"/>
+	</bean>
+
+	<!-- setter을 이용한 의존성 주입 -->
+	<!-- 생성자 주입은 프로그램 실행중 생성자로 주입된 값을 변경할 수 없다. -->
+	<!-- 
+		반드시 setter 가 존재해야한다. 
+		setter은  name속성의 이름을 기준으로 첫글자를 대문자로하여 앞에 set을 뭍은 메소드
+		name="userService" => setUserService
+	 -->
+	<bean id="bean" class="com.user3.User">
+		<property name="userService" ref="userService"/>
+	</bean>
+
+
+
+</beans>

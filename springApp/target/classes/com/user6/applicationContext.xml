@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!-- xml 스키마 정보 포함 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+		
+	<bean id="userService" class="com.user6.UserServiceImpl">
+		<property name="name" value="이영헌"/>
+		<property name="tel" value="010-3938-7660"/>
+		<property name="age" value="28"/>
+	</bean>
+	
+	<!-- 
+		-의존관계 자동 설정
+			byName : 프로퍼티와 동일한 이름을 갖는 빈을 찾아 주입(setter injection)
+			byType : 프로퍼티와 동일한 타입을 갖는 빈을 찾아 주입 (setter injection)(동일한 타입이 1개인 경우만 가능)
+			constructor : 생성자를 이용하여 타입이 일치한 빈을 찾아 주입(constructor)
+			-이 방법은 스프링 5.1 부터는 deprecated(중요도가 낮아서 시스템에서 사라지게 됨) 됨
+	 -->
+	<bean id="user" class="com.user6.User"
+		autowire="byName"/>
+
+</beans>
