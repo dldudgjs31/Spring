@@ -1,0 +1,17 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h3>블로그 메인</h3>
+<c:forEach var="dto" items="${blogList}">
+<p> <a href="${pageContext.request.contextPath}/blog/${dto.blogIdx}/home">${dto.blogName}</a> </p>
+</c:forEach>
+</body>
+</html>
